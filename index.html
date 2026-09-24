@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MovieClipsHQ - Discover premium movie clips and cinematic content. Search, filter, and watch curated film collections.">
+    <meta name="keywords" content="movies, film, cinema, video clips, movie discovery, streaming">
+    <meta name="author" content="MovieClipsHQ">
+    <meta name="theme-color" content="#0a0e27">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="MovieClipsHQ - Discover Something Worth Watching">
+    <meta property="og:description" content="Premium movie discovery and cinematic content platform">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://movieclipshq.com">
+    <meta property="og:image" content="https://movieclipshq.com/og-image.jpg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MovieClipsHQ">
+    <meta name="twitter:description" content="Discover premium movie clips and cinematic content">
+    
+    <title>MovieClipsHQ - Premium Movie Discovery & Cinema Blog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <div class="logo">
+                <h1>MovieClipsHQ</h1>
+            </div>
+            
+            <nav class="nav-desktop">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#movies" class="nav-link">Movies</a>
+                <a href="#genres" class="nav-link">Genres</a>
+                <a href="#about" class="nav-link">About</a>
+            </nav>
+            
+            <div class="header-search">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <input 
+                    type="text" 
+                    class="search-input" 
+                    id="headerSearch" 
+                    placeholder="Search movies..."
+                    autocomplete="off"
+                >
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        
+        <nav class="nav-mobile" id="mobileNav">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#movies" class="nav-link">Movies</a>
+            <a href="#genres" class="nav-link">Genres</a>
+            <a href="#about" class="nav-link">About</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <div class="hero-label">MOVIECLIPSHQ</div>
+                <h2 class="hero-title">Discover Something Worth Watching</h2>
+                <p class="hero-subtitle">Explore curated movie clips and cinematic masterpieces</p>
+                
+                <div class="hero-search">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <input 
+                        type="text" 
+                        class="hero-search-input" 
+                        id="heroSearch" 
+                        placeholder="Search by title, genre, or year..."
+                        autocomplete="off"
+                    >
+                </div>
+                
+                <button class="cta-button" id="ctaButton">Browse All Movies</button>
+            </div>
+        </section>
+
+        <!-- Recommended Movies Section -->
+        <section class="recommended" id="recommended">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Featured Selections</h2>
+                    <p class="section-subtitle">Hand-picked cinematic experiences</p>
+                </div>
+                
+                <div class="recommended-grid" id="recommendedGrid">
+                    <!-- Auto-populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Movie Library Section -->
+        <section class="movies" id="movies">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Movie Library</h2>
+                    <p class="section-subtitle">Browse our complete collection</p>
+                </div>
+                
+                <!-- Genre Filter -->
+                <div class="genre-filter">
+                    <button class="genre-btn active" data-genre="all">All</button>
+                    <!-- Auto-populated by JavaScript -->
+                </div>
+                
+                <!-- Search Results Info -->
+                <div class="search-info" id="searchInfo" style="display: none;">
+                    <p>Search results for: <strong id="searchTerm"></strong></p>
+                    <button class="clear-search-btn" id="clearSearchBtn">Clear Search</button>
+                </div>
+                
+                <!-- Movie Grid -->
+                <div class="movie-grid" id="movieGrid">
+                    <!-- Auto-populated by JavaScript -->
+                </div>
+                
+                <!-- No Results State -->
+                <div class="no-results" id="noResults" style="display: none;">
+                    <div class="no-results-content">
+                        <h3>No movies found</h3>
+                        <p>Try adjusting your search or filters</p>
+                        <button class="reset-btn" id="resetBtn">View All Movies</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="container">
+                <div class="about-content">
+                    <h2 class="section-title">About MovieClipsHQ</h2>
+                    <p>
+                        MovieClipsHQ is a premium movie discovery and cinema blog platform dedicated to bringing you the finest in film and cinematic content. 
+                        We curate and showcase exceptional movie clips, trailers, and cinematic experiences from around the world.
+                    </p>
+                    <p>
+                        Whether you're a casual viewer or a serious film enthusiast, MovieClipsHQ offers a sophisticated space to explore, 
+                        discover, and engage with cinema in meaningful ways.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <div class="stat-number" id="movieCount">0</div>
+                            <div class="stat-label">Movies</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number" id="genreCount">0</div>
+                            <div class="stat-label">Genres</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Streaming</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Movie Detail Modal -->
+    <div class="modal" id="movieModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            
+            <div class="modal-body">
+                <div class="modal-video-container">
+                    <video id="moviePlayer" controls controlsList="nodownload">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                
+                <div class="modal-info">
+                    <h2 id="movieTitle" class="modal-title"></h2>
+                    
+                    <div class="modal-metadata">
+                        <span class="metadata-item" id="movieYear"></span>
+                        <span class="metadata-item" id="movieGenre"></span>
+                    </div>
+                    
+                    <p id="movieDescription" class="modal-description"></p>
+                    
+                    <!-- Related Movies -->
+                    <div class="related-section">
+                        <h3 class="related-title">You may also like</h3>
+                        <div class="related-grid" id="relatedMovies">
+                            <!-- Auto-populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3 class="footer-title">MovieClipsHQ</h3>
+                    <p class="footer-desc">Premium movie discovery and cinema blog.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-heading">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#movies">Movies</a></li>
+                        <li><a href="#genres">Genres</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-heading">Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-heading">Follow</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Twitter</a>
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 MovieClipsHQ. All rights reserved. Content is for demonstration purposes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
