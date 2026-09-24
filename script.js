@@ -10,15 +10,15 @@
 // Simply duplicate a movie object and change the properties
 const movies = [
     {
-        id: 1,
-        title: "Neon Dreams",
-        year: "2026",
-        genre: "Sci-Fi",
-        description: "A cyberpunk thriller exploring the intersection of consciousness and technology. Dive into a world where reality is negotiable.",
-        poster: "https://via.placeholder.com/300x450/1a1f3a/ff4444?text=Neon+Dreams",
-        video: "https://commondatastorage.googleapis.com/gtv-videos-library/sample/BigBuckBunny.mp4",
-        featured: true
-    },
+    id: 1,
+    title: "CHASE",
+    year: "2024",
+    genre: "Action",
+    description: "Hollywood action full movie",
+    poster: "assets/posters/chase.jpg",
+    video: "https://drive.google.com/uc?id=ABCD1234XYZ", 
+    featured: true
+},
     {
         id: 2,
         title: "Crimson Tide Rising",
