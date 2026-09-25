@@ -16,7 +16,7 @@ const movies = [
     genre: "Action",
     description: "Hollywood action full movie",
     poster: "assets/posters/chase.jpg",
-    video: "https://drive.google.com/uc?id=ABCD1234XYZ", 
+    video: "https://drive.google.com/file/d/18VICHfqab_M3NgwALGvTP0lF90Jb05aO/view?usp=drivesdk", 
     featured: true
 },
     {
