@@ -16,9 +16,9 @@ const movies = [
     genre: "Action",
     description: "Hollywood action full movie",
     poster: "assets/posters/chase.jpg",
-    video: "https://drive.google.com/file/d/18VICHfqab_M3NgwALGvTP0lF90Jb05aO/view?usp=drivesdk", 
+    video: "https://drive.google.com/uc?id=18VICHfqab_M3NgwALGvTP0lF90Jb05aO",
     featured: true
-},
+    }
     {
         id: 2,
         title: "Crimson Tide Rising",
