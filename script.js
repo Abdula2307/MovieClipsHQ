@@ -20,13 +20,14 @@
 
 const movies = [
 {
+{
     id: 1,
     title: "CHASE",
     year: "2024",
     genre: "Action",
     description: "Hollywood action full movie",
     poster: "assets/posters/chase.jpg",
-    video: "https://drive.google.com/uc?id=18VICHfqab_M3NgwALGvTP0lF90Jb05aO",
+    video: "https://drive.google.com/uc?export=download&id=18VICHfqab_M3NgwALGvTP0lF90Jb05aO",
     featured: true
 },
 
