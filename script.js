@@ -1,23 +1,17 @@
-/* ============================================
-   MOVIECLIPSHQ - MAIN APPLICATION
-   Production-quality vanilla JavaScript
-   ============================================ */
 
-// ============================================
-// MOVIE DATABASE
-// ============================================
-// EDIT THIS TO ADD MORE MOVIES
-// Simply duplicate a movie object and change the properties
 const movies = [
     {
-    id: 1,
-    title: "CHASE",
-    year: "2024",
-    genre: "Action",
-    description: "Hollywood action full movie",
-    poster: "assets/posters/chase.jpg",
-    video: "https://drive.google.com/uc?id=18VICHfqab_M3NgwALGvTP0lF90Jb05aO",
-    featured: true
+        id: 1,
+        title: "CHASE",
+        year: "2024",
+        genre: "Action",
+        description: "Hollywood action full movie",
+        poster: "assets/posters/chase.jpg",
+
+        // Google Drive video
+        video: "https://drive.google.com/uc?export=download&id=18VICHfqab_M3NgwALGvTP0lF90Jb05aO",
+
+        featured: true
     },
     {
         id: 2,
@@ -25,7 +19,7 @@ const movies = [
         year: "2025",
         genre: "Action",
         description: "An intense naval action thriller. When tensions escalate at sea, one captain must make impossible choices.",
-        poster: "https://via.placeholder.com/300x450/1a1f3a/ff6b6b?text=Crimson+Tide",
+        poster: "https://placehold.co/300x450/1a1f3a/ffffff?text=Crimson+Tide",
         video: "https://commondatastorage.googleapis.com/gtv-videos-library/sample/ElephantsDream.mp4",
         featured: true
     },
@@ -35,7 +29,7 @@ const movies = [
         year: "2025",
         genre: "Drama",
         description: "A poignant examination of memory and loss. A woman confronts her past when a stranger arrives in town with a secret.",
-        poster: "https://via.placeholder.com/300x450/1a1f3a/ff6b6b?text=Echoes",
+        poster: "https://placehold.co/300x450/1a1f3a/ffffff?text=Echoes",
         video: "https://commondatastorage.googleapis.com/gtv-videos-library/sample/ForBiggerBlazes.mp4",
         featured: true
     },
@@ -45,7 +39,7 @@ const movies = [
         year: "2026",
         genre: "Comedy",
         description: "A hilarious romp through mistaken identities and chaotic situations. Perfect for a night of endless laughs.",
-        poster: "https://via.placeholder.com/300x450/1a1f3a/ff4444?text=Laughter",
+        poster: "https://placehold.co/300x450/1a1f3a/ffffff?text=Laughter",
         video: "https://commondatastorage.googleapis.com/gtv-videos-library/sample/ForBiggerEscapes.mp4",
         featured: false
     },
@@ -55,7 +49,7 @@ const movies = [
         year: "2024",
         genre: "Animation",
         description: "An animated masterpiece about a girl's journey through a magical cosmos filled with wonder and danger.",
-        poster: "https://via.placeholder.com/300x450/1a1f3a/ff6b6b?text=Starlight",
+        poster: "https://placehold.co/300x450/1a1f3a/ffffff?text=Starlight",
         video: "https://commondatastorage.googleapis.com/gtv-videos-library/sample/ForBiggerFun.mp4",
         featured: false
     },
@@ -65,7 +59,7 @@ const movies = [
         year: "2025",
         genre: "Romance",
         description: "Two souls reconnect on a fateful night. Can they overcome the years that have passed between them?",
-        poster: "https://via.placeholder.com/300x450/1a1f3a/ff4444?text=Midnight",
+        poster: "https://placehold.co/300x450/1a1f3a/ffffff?text=Midnight",
         video: "https://commondatastorage.googleapis.com/gtv-videos-library/sample/ForBiggerJoyrides.mp4",
         featured: false
     },
@@ -75,7 +69,7 @@ const movies = [
         year: "2026",
         genre: "Adventure",
         description: "Journey to uncharted territories with a legendary explorer. Discover wonders and dangers beyond imagination.",
-        poster: "https://via.placeholder.com/300x450/1a1f3a/ff6b6b?text=Explorer",
+        poster: "https://placehold.co/300x450/1a1f3a/ffffff?text=Explorer",
         video: "https://commondatastorage.googleapis.com/gtv-videos-library/sample/BigBuckBunny.mp4",
         featured: false
     },
@@ -85,7 +79,7 @@ const movies = [
         year: "2024",
         genre: "Thriller",
         description: "A psychological thriller set in the frozen north. Every shadow hides a secret. Every stranger has a motive.",
-        poster: "https://via.placeholder.com/300x450/1a1f3a/ff4444?text=Shadows",
+        poster: "https://placehold.co/300x450/1a1f3a/ffffff?text=Shadows",
         video: "https://commondatastorage.googleapis.com/gtv-videos-library/sample/ElephantsDream.mp4",
         featured: false
     },
@@ -95,7 +89,7 @@ const movies = [
         year: "2025",
         genre: "Horror",
         description: "A classical composer discovers a mysterious score. Playing it awakens something ancient and terrifying.",
-        poster: "https://via.placeholder.com/300x450/1a1f3a/ff6b6b?text=Haunted",
+        poster: "https://placehold.co/300x450/1a1f3a/ffffff?text=Haunted",
         video: "https://commondatastorage.googleapis.com/gtv-videos-library/sample/ForBiggerBlazes.mp4",
         featured: false
     },
@@ -105,7 +99,7 @@ const movies = [
         year: "2026",
         genre: "Drama",
         description: "Behind closed doors, a diplomat balances duty and conscience. One decision will change everything.",
-        poster: "https://via.placeholder.com/300x450/1a1f3a/ff4444?text=Diplomat",
+        poster: "https://placehold.co/300x450/1a1f3a/ffffff?text=Diplomat",
         video: "https://commondatastorage.googleapis.com/gtv-videos-library/sample/ForBiggerEscapes.mp4",
         featured: false
     },
@@ -115,7 +109,7 @@ const movies = [
         year: "2026",
         genre: "Sci-Fi",
         description: "A hacker discovers a quantum computer that could reshape reality. Governments will stop at nothing to find it.",
-        poster: "https://via.placeholder.com/300x450/1a1f3a/ff6b6b?text=Quantum",
+        poster: "https://placehold.co/300x450/1a1f3a/ffffff?text=Quantum",
         video: "https://commondatastorage.googleapis.com/gtv-videos-library/sample/ForBiggerFun.mp4",
         featured: false
     },
@@ -125,7 +119,7 @@ const movies = [
         year: "2024",
         genre: "Adventure",
         description: "A wildlife photographer's journey across untamed landscapes leads to discovery and transformation.",
-        poster: "https://via.placeholder.com/300x450/1a1f3a/ff4444?text=Wild+Heart",
+        poster: "https://placehold.co/300x450/1a1f3a/ffffff?text=Wild+Heart",
         video: "https://commondatastorage.googleapis.com/gtv-videos-library/sample/ForBiggerJoyrides.mp4",
         featured: false
     }
@@ -134,18 +128,20 @@ const movies = [
 // ============================================
 // STATE MANAGEMENT
 // ============================================
+
 let state = {
     currentMovie: null,
     filteredMovies: [...movies],
-    activeGenre: 'all',
-    searchTerm: '',
+    activeGenre: "all",
+    searchTerm: "",
     genres: []
 };
 
 // ============================================
 // INITIALIZATION
 // ============================================
-document.addEventListener('DOMContentLoaded', () => {
+
+document.addEventListener("DOMContentLoaded", () => {
     extractGenres();
     renderRecommended();
     renderMovieGrid();
@@ -157,79 +153,105 @@ document.addEventListener('DOMContentLoaded', () => {
 // ============================================
 // EVENT LISTENERS
 // ============================================
+
 function setupEventListeners() {
-    // Search
-    const headerSearch = document.getElementById('headerSearch');
-    const heroSearch = document.getElementById('heroSearch');
-    
-    headerSearch.addEventListener('input', handleSearch);
-    heroSearch.addEventListener('input', handleSearch);
-    
-    // CTA Button
-    document.getElementById('ctaButton').addEventListener('click', () => {
-        document.getElementById('movies').scrollIntoView({ behavior: 'smooth' });
-    });
-    
-    // Genre filter
-    document.addEventListener('click', (e) => {
-        if (e.target.classList.contains('genre-btn')) {
-            filterByGenre(e.target.dataset.genre);
-        }
-    });
-    
-    // Movie cards
-    document.addEventListener('click', (e) => {
-        const movieCard = e.target.closest('.movie-card');
-        if (movieCard) {
-            const movieId = parseInt(movieCard.dataset.id);
-            openMovieModal(movieId);
-        }
-    });
-    
-    // Related movies
-    document.addEventListener('click', (e) => {
-        if (e.target.closest('.related-movie')) {
-            const movieId = parseInt(e.target.closest('.related-movie').dataset.id);
-            openMovieModal(movieId);
-        }
-    });
-    
-    // Modal close
-    document.getElementById('modalClose').addEventListener('click', closeMovieModal);
-    document.getElementById('movieModal').addEventListener('click', (e) => {
-        if (e.target.id === 'movieModal') {
-            closeMovieModal();
-        }
-    });
-    
-    // Clear search
-    document.getElementById('clearSearchBtn').addEventListener('click', clearSearch);
-    document.getElementById('resetBtn').addEventListener('click', resetFilters);
-    
-    // Mobile menu
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileNav = document.getElementById('mobileNav');
-    
-    mobileMenuBtn.addEventListener('click', () => {
-        mobileMenuBtn.classList.toggle('active');
-        mobileNav.classList.toggle('active');
-    });
-    
-    // Mobile nav links close menu
-    document.querySelectorAll('.nav-mobile a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenuBtn.classList.remove('active');
-            mobileNav.classList.remove('active');
+    const headerSearch = document.getElementById("headerSearch");
+    const heroSearch = document.getElementById("heroSearch");
+
+    if (headerSearch) {
+        headerSearch.addEventListener("input", handleSearch);
+    }
+
+    if (heroSearch) {
+        heroSearch.addEventListener("input", handleSearch);
+    }
+
+    const ctaButton = document.getElementById("ctaButton");
+
+    if (ctaButton) {
+        ctaButton.addEventListener("click", () => {
+            document.getElementById("movies")
+                ?.scrollIntoView({ behavior: "smooth" });
         });
+    }
+
+    // Genre filters
+    document.addEventListener("click", (e) => {
+        const genreBtn = e.target.closest(".genre-btn");
+
+        if (genreBtn) {
+            filterByGenre(genreBtn.dataset.genre);
+        }
     });
-    
+
+    // Movie cards
+    document.addEventListener("click", (e) => {
+        const movieCard = e.target.closest(".movie-card");
+
+        if (movieCard) {
+            openMovieModal(Number(movieCard.dataset.id));
+        }
+    });
+
+    // Related movies
+    document.addEventListener("click", (e) => {
+        const relatedMovie = e.target.closest(".related-movie");
+
+        if (relatedMovie) {
+            openMovieModal(Number(relatedMovie.dataset.id));
+        }
+    });
+
+    // Modal close
+    document.getElementById("modalClose")
+        ?.addEventListener("click", closeMovieModal);
+
+    document.getElementById("movieModal")
+        ?.addEventListener("click", (e) => {
+            if (e.target.id === "movieModal") {
+                closeMovieModal();
+            }
+        });
+
+    // Clear search
+    document.getElementById("clearSearchBtn")
+        ?.addEventListener("click", clearSearch);
+
+    document.getElementById("resetBtn")
+        ?.addEventListener("click", resetFilters);
+
+    // Mobile menu
+    const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+    const mobileNav = document.getElementById("mobileNav");
+
+    if (mobileMenuBtn && mobileNav) {
+        mobileMenuBtn.addEventListener("click", () => {
+            mobileMenuBtn.classList.toggle("active");
+            mobileNav.classList.toggle("active");
+        });
+
+        document.querySelectorAll(".nav-mobile a")
+            .forEach(link => {
+                link.addEventListener("click", () => {
+                    mobileMenuBtn.classList.remove("active");
+                    mobileNav.classList.remove("active");
+                });
+            });
+    }
+
     // Header scroll effect
-    window.addEventListener('scroll', () => {
-        const header = document.getElementById('header');
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
+    window.addEventListener("scroll", () => {
+        const header = document.getElementById("header");
+
+        if (header) {
+            header.classList.toggle("scrolled", window.scrollY > 50);
+        }
+    });
+
+    // Keyboard shortcuts
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+            closeMovieModal();
         }
     });
 }
@@ -237,64 +259,111 @@ function setupEventListeners() {
 // ============================================
 // GENRE MANAGEMENT
 // ============================================
+
 function extractGenres() {
     const genreSet = new Set();
+
     movies.forEach(movie => {
         genreSet.add(movie.genre);
     });
+
     state.genres = Array.from(genreSet).sort();
 }
 
 function renderGenreButtons() {
-    const container = document.querySelector('.genre-filter');
-    
-    // Keep the "All" button
-    const allBtn = container.querySelector('[data-genre="all"]');
-    
-    // Add genre buttons
+    const container = document.querySelector(".genre-filter");
+
+    if (!container) return;
+
+    // Remove old generated buttons to prevent duplicates
+    container.querySelectorAll(".genre-btn:not([data-genre='all'])")
+        .forEach(btn => btn.remove());
+
     state.genres.forEach(genre => {
-        const btn = document.createElement('button');
-        btn.className = 'genre-btn';
+        const btn = document.createElement("button");
+
+        btn.className = "genre-btn";
         btn.dataset.genre = genre;
         btn.textContent = genre;
+
         container.appendChild(btn);
     });
+
+    updateGenreButtons();
 }
 
 // ============================================
 // SEARCH FUNCTIONALITY
 // ============================================
+
 function handleSearch(e) {
     const searchTerm = e.target.value.toLowerCase().trim();
+
     state.searchTerm = searchTerm;
-    state.activeGenre = 'all';
-    
-    if (searchTerm === '') {
+    state.activeGenre = "all";
+
+    // Keep both search fields synchronized
+    const headerSearch = document.getElementById("headerSearch");
+    const heroSearch = document.getElementById("heroSearch");
+
+    if (headerSearch && headerSearch !== e.target) {
+        headerSearch.value = e.target.value;
+    }
+
+    if (heroSearch && heroSearch !== e.target) {
+        heroSearch.value = e.target.value;
+    }
+
+    if (!searchTerm) {
         state.filteredMovies = [...movies];
-        document.getElementById('searchInfo').style.display = 'none';
+
+        const searchInfo = document.getElementById("searchInfo");
+
+        if (searchInfo) {
+            searchInfo.style.display = "none";
+        }
     } else {
         state.filteredMovies = movies.filter(movie => {
-            const matchesTitle = movie.title.toLowerCase().includes(searchTerm);
-            const matchesGenre = movie.genre.toLowerCase().includes(searchTerm);
-            const matchesYear = movie.year.includes(searchTerm);
-            return matchesTitle || matchesGenre || matchesYear;
+            return (
+                movie.title.toLowerCase().includes(searchTerm) ||
+                movie.genre.toLowerCase().includes(searchTerm) ||
+                movie.year.includes(searchTerm) ||
+                movie.description.toLowerCase().includes(searchTerm)
+            );
         });
-        
-        document.getElementById('searchTerm').textContent = searchTerm;
-        document.getElementById('searchInfo').style.display = 'block';
+
+        const searchTermElement = document.getElementById("searchTerm");
+        const searchInfo = document.getElementById("searchInfo");
+
+        if (searchTermElement) {
+            searchTermElement.textContent = searchTerm;
+        }
+
+        if (searchInfo) {
+            searchInfo.style.display = "block";
+        }
     }
-    
-    // Update genre buttons
+
     updateGenreButtons();
     renderMovieGrid();
 }
 
 function clearSearch() {
-    state.searchTerm = '';
+    state.searchTerm = "";
     state.filteredMovies = [...movies];
-    document.getElementById('searchInfo').style.display = 'none';
-    document.getElementById('headerSearch').value = '';
-    document.getElementById('heroSearch').value = '';
+
+    const searchInfo = document.getElementById("searchInfo");
+
+    if (searchInfo) {
+        searchInfo.style.display = "none";
+    }
+
+    const headerSearch = document.getElementById("headerSearch");
+    const heroSearch = document.getElementById("heroSearch");
+
+    if (headerSearch) headerSearch.value = "";
+    if (heroSearch) heroSearch.value = "";
+
     updateGenreButtons();
     renderMovieGrid();
 }
@@ -302,172 +371,291 @@ function clearSearch() {
 // ============================================
 // FILTERING
 // ============================================
+
 function filterByGenre(genre) {
     state.activeGenre = genre;
-    state.searchTerm = '';
-    
-    // Clear search inputs
-    document.getElementById('headerSearch').value = '';
-    document.getElementById('heroSearch').value = '';
-    document.getElementById('searchInfo').style.display = 'none';
-    
-    if (genre === 'all') {
+    state.searchTerm = "";
+
+    const headerSearch = document.getElementById("headerSearch");
+    const heroSearch = document.getElementById("heroSearch");
+
+    if (headerSearch) headerSearch.value = "";
+    if (heroSearch) heroSearch.value = "";
+
+    const searchInfo = document.getElementById("searchInfo");
+
+    if (searchInfo) {
+        searchInfo.style.display = "none";
+    }
+
+    if (genre === "all") {
         state.filteredMovies = [...movies];
     } else {
-        state.filteredMovies = movies.filter(movie => movie.genre === genre);
+        state.filteredMovies = movies.filter(
+            movie => movie.genre === genre
+        );
     }
-    
+
     updateGenreButtons();
     renderMovieGrid();
 }
 
 function updateGenreButtons() {
-    document.querySelectorAll('.genre-btn').forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.dataset.genre === state.activeGenre) {
-            btn.classList.add('active');
-        }
+    document.querySelectorAll(".genre-btn").forEach(btn => {
+        btn.classList.toggle(
+            "active",
+            btn.dataset.genre === state.activeGenre
+        );
     });
 }
 
 function resetFilters() {
-    state.searchTerm = '';
-    state.activeGenre = 'all';
+    state.searchTerm = "";
+    state.activeGenre = "all";
     state.filteredMovies = [...movies];
-    document.getElementById('headerSearch').value = '';
-    document.getElementById('heroSearch').value = '';
-    document.getElementById('searchInfo').style.display = 'none';
+
+    const headerSearch = document.getElementById("headerSearch");
+    const heroSearch = document.getElementById("heroSearch");
+    const searchInfo = document.getElementById("searchInfo");
+
+    if (headerSearch) headerSearch.value = "";
+    if (heroSearch) heroSearch.value = "";
+
+    if (searchInfo) {
+        searchInfo.style.display = "none";
+    }
+
     updateGenreButtons();
     renderMovieGrid();
 }
 
 // ============================================
-// RENDERING
+// MOVIE CARD CREATION
 // ============================================
-function renderRecommended() {
-    const container = document.getElementById('recommendedGrid');
-    container.innerHTML = '';
-    
-    // Get featured movies
-    let featured = movies.filter(m => m.featured);
-    
-    // If no featured movies, show first 3
-    if (featured.length === 0) {
-        featured = movies.slice(0, 3);
-    }
-    
-    featured.forEach(movie => {
-        const card = createMovieCard(movie);
-        container.appendChild(card);
-    });
-}
-
-function renderMovieGrid() {
-    const container = document.getElementById('movieGrid');
-    const noResults = document.getElementById('noResults');
-    
-    container.innerHTML = '';
-    
-    if (state.filteredMovies.length === 0) {
-        noResults.style.display = 'block';
-        return;
-    }
-    
-    noResults.style.display = 'none';
-    
-    state.filteredMovies.forEach(movie => {
-        const card = createMovieCard(movie);
-        container.appendChild(card);
-    });
-}
 
 function createMovieCard(movie) {
-    const card = document.createElement('div');
-    card.className = 'movie-card';
+    const card = document.createElement("div");
+
+    card.className = "movie-card";
     card.dataset.id = movie.id;
-    
+
     card.innerHTML = `
         <div class="movie-poster-container">
-            <img src="${movie.poster}" alt="${movie.title}" class="movie-poster" loading="lazy">
+            <img
+                src="${movie.poster}"
+                alt="${movie.title}"
+                class="movie-poster"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='https://placehold.co/300x450/1a1f3a/ffffff?text=No+Poster';"
+            >
+
             <div class="movie-play-btn"></div>
         </div>
+
         <div class="movie-info">
             <h3 class="movie-title">${movie.title}</h3>
+
             <div class="movie-meta">
                 <span class="movie-year">${movie.year}</span>
                 <span class="movie-genre">${movie.genre}</span>
             </div>
+
             <p class="movie-description">${movie.description}</p>
         </div>
     `;
-    
+
     return card;
 }
 
 // ============================================
-// MODAL FUNCTIONALITY
+// RENDER RECOMMENDED MOVIES
 // ============================================
+
+function renderRecommended() {
+    const container = document.getElementById("recommendedGrid");
+
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    const featured = movies.filter(movie => movie.featured);
+
+    const recommended = featured.length
+        ? featured
+        : movies.slice(0, 3);
+
+    recommended.forEach(movie => {
+        container.appendChild(createMovieCard(movie));
+    });
+}
+
+// ============================================
+// RENDER MOVIE GRID
+// ============================================
+
+function renderMovieGrid() {
+    const container = document.getElementById("movieGrid");
+    const noResults = document.getElementById("noResults");
+
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    if (state.filteredMovies.length === 0) {
+        if (noResults) {
+            noResults.style.display = "block";
+        }
+
+        return;
+    }
+
+    if (noResults) {
+        noResults.style.display = "none";
+    }
+
+    state.filteredMovies.forEach(movie => {
+        container.appendChild(createMovieCard(movie));
+    });
+}
+
+// ============================================
+// MOVIE PLAYER / MODAL
+// ============================================
+
 function openMovieModal(movieId) {
     const movie = movies.find(m => m.id === movieId);
+
     if (!movie) return;
-    
+
     state.currentMovie = movie;
-    
-    // Populate modal
-    document.getElementById('movieTitle').textContent = movie.title;
-    document.getElementById('movieYear').textContent = movie.year;
-    document.getElementById('movieGenre').textContent = movie.genre;
-    document.getElementById('movieDescription').textContent = movie.description;
-    
-    // Set video source
-    const videoPlayer = document.getElementById('moviePlayer');
-    videoPlayer.src = movie.video;
-    videoPlayer.load();
-    
-    // Render related movies
+
+    const title = document.getElementById("movieTitle");
+    const year = document.getElementById("movieYear");
+    const genre = document.getElementById("movieGenre");
+    const description = document.getElementById("movieDescription");
+
+    if (title) title.textContent = movie.title;
+    if (year) year.textContent = movie.year;
+    if (genre) genre.textContent = movie.genre;
+
+    if (description) {
+        description.textContent = movie.description;
+    }
+
+    const videoPlayer = document.getElementById("moviePlayer");
+
+    if (videoPlayer) {
+        videoPlayer.pause();
+
+        videoPlayer.onerror = () => {
+            console.error(
+                "Video could not be loaded:",
+                movie.title,
+                movie.video
+            );
+        };
+
+        videoPlayer.onloadedmetadata = () => {
+            console.log(
+                "Video loaded successfully:",
+                movie.title,
+                videoPlayer.duration
+            );
+        };
+
+        videoPlayer.src = movie.video;
+        videoPlayer.load();
+
+        // Browser may block autoplay. User can press Play.
+        const playPromise = videoPlayer.play();
+
+        if (playPromise !== undefined) {
+            playPromise.catch(() => {
+                console.log("Press Play to start the video.");
+            });
+        }
+    }
+
     renderRelatedMovies(movieId);
-    
-    // Show modal
-    const modal = document.getElementById('movieModal');
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+
+    const modal = document.getElementById("movieModal");
+
+    if (modal) {
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+    }
 }
 
 function closeMovieModal() {
-    const modal = document.getElementById('movieModal');
-    modal.classList.remove('active');
-    document.body.style.overflow = 'auto';
-    
-    // Stop video
-    const videoPlayer = document.getElementById('moviePlayer');
-    videoPlayer.pause();
-    videoPlayer.src = '';
-    
+    const modal = document.getElementById("movieModal");
+
+    if (modal) {
+        modal.classList.remove("active");
+    }
+
+    document.body.style.overflow = "auto";
+
+    const videoPlayer = document.getElementById("moviePlayer");
+
+    if (videoPlayer) {
+        videoPlayer.pause();
+        videoPlayer.removeAttribute("src");
+        videoPlayer.load();
+    }
+
     state.currentMovie = null;
 }
 
+// ============================================
+// RELATED MOVIES
+// ============================================
+
 function renderRelatedMovies(currentMovieId) {
-    const container = document.getElementById('relatedMovies');
-    container.innerHTML = '';
-    
-    const currentMovie = movies.find(m => m.id === currentMovieId);
+    const container = document.getElementById("relatedMovies");
+
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    const currentMovie = movies.find(
+        movie => movie.id === currentMovieId
+    );
+
+    if (!currentMovie) return;
+
     const related = movies
-        .filter(m => m.id !== currentMovieId && m.genre === currentMovie.genre)
+        .filter(movie =>
+            movie.id !== currentMovieId &&
+            movie.genre === currentMovie.genre
+        )
         .slice(0, 4);
-    
-    // If not enough related by genre, fill with random
+
     if (related.length < 4) {
         const remaining = movies
-            .filter(m => m.id !== currentMovieId && !related.includes(m))
+            .filter(movie =>
+                movie.id !== currentMovieId &&
+                !related.some(item => item.id === movie.id)
+            )
             .slice(0, 4 - related.length);
+
         related.push(...remaining);
     }
-    
+
     related.forEach(movie => {
-        const item = document.createElement('div');
-        item.className = 'related-movie';
+        const item = document.createElement("div");
+
+        item.className = "related-movie";
         item.dataset.id = movie.id;
-        item.innerHTML = `<img src="${movie.poster}" alt="${movie.title}" loading="lazy">`;
+
+        item.innerHTML = `
+            <img
+                src="${movie.poster}"
+                alt="${movie.title}"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='https://placehold.co/150x225/1a1f3a/ffffff?text=No+Poster';"
+            >
+        `;
+
         container.appendChild(item);
     });
 }
@@ -475,38 +663,23 @@ function renderRelatedMovies(currentMovieId) {
 // ============================================
 // STATISTICS
 // ============================================
+
 function updateStats() {
-    document.getElementById('movieCount').textContent = movies.length;
-    document.getElementById('genreCount').textContent = state.genres.length;
-}
+    const movieCount = document.getElementById("movieCount");
+    const genreCount = document.getElementById("genreCount");
 
-// ============================================
-// KEYBOARD SHORTCUTS
-// ============================================
-document.addEventListener('keydown', (e) => {
-    // Escape to close modal
-    if (e.key === 'Escape') {
-        closeMovieModal();
+    if (movieCount) {
+        movieCount.textContent = movies.length;
     }
-});
+
+    if (genreCount) {
+        genreCount.textContent = state.genres.length;
+    }
+}
 
 // ============================================
-// IMAGE LAZY LOADING
+// EXPORT MOVIE DATA (OPTIONAL)
 // ============================================
-if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src || img.src;
-                observer.unobserve(img);
-            }
-        });
-    });
-    
-    document.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('img[loading="lazy"]').forEach(img => {
-            imageObserver.observe(img);
-        });
-    });
-}
+
+console.log("Movie website loaded.");
+console.log("Total movies:", movies.length);
