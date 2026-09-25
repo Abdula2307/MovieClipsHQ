@@ -18,7 +18,7 @@ const movies = [
     poster: "assets/posters/chase.jpg",
     video: "https://drive.google.com/uc?id=18VICHfqab_M3NgwALGvTP0lF90Jb05aO",
     featured: true
-    }
+    },
     {
         id: 2,
         title: "Crimson Tide Rising",
