@@ -1,4 +1,3 @@
-
 /* =========================================================
    MOVIECLIPSHQ
    Movie library, search, genre filters, modal and player
@@ -12,24 +11,22 @@
 
    IMPORTANT:
    - poster: A direct image URL.
-   - video: A direct video URL (MP4 or supported format).
+   - youtubeId: The YouTube video ID (the part after "v=" or
+     after "youtu.be/"). Leave "" if there's no video yet.
    - featured: true displays the movie in Featured Selections.
-   - Use videos you own, have permission to use, or are
-     authorized to embed.
    --------------------------------------------------------- */
 
 const movies = [
-{
-{
-    id: 1,
-    title: "CHASE",
-    year: "2024",
-    genre: "Action",
-    description: "Hollywood action full movie",
-    poster: "assets/posters/chase.jpg",
-    video: "https://drive.google.com/uc?export=download&id=18VICHfqab_M3NgwALGvTP0lF90Jb05aO",
-    featured: true
-},
+    {
+        id: 1,
+        title: "CHASE",
+        year: "2024",
+        genre: "Action",
+        description: "Hollywood action full movie.",
+        poster: "assets/posters/chase.jpg",
+        youtubeId: "6vLVKZUVxWQ",
+        featured: true
+    },
 
     {
         id: 2,
@@ -39,12 +36,9 @@ const movies = [
         description:
             "A mysterious story filled with unexpected turns, " +
             "suspense, and secrets waiting to be uncovered.",
-
         poster:
             "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=600&h=900&fit=crop",
-
-        video: "",
-
+        youtubeId: "",
         featured: true
     },
 
@@ -56,12 +50,9 @@ const movies = [
         description:
             "An imaginative journey into the unknown, exploring " +
             "the future of humanity and the mysteries of space.",
-
         poster:
             "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=600&h=900&fit=crop",
-
-        video: "",
-
+        youtubeId: "",
         featured: true
     },
 
@@ -73,12 +64,9 @@ const movies = [
         description:
             "A heartfelt story about love, memories, and the " +
             "unexpected moments that bring people together.",
-
         poster:
             "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&h=900&fit=crop",
-
-        video: "",
-
+        youtubeId: "",
         featured: true
     },
 
@@ -90,12 +78,9 @@ const movies = [
         description:
             "A determined detective investigates a complicated " +
             "case that challenges everything he believes.",
-
         poster:
             "https://images.unsplash.com/photo-1519608487953-e999c86e7455?w=600&h=900&fit=crop",
-
-        video: "",
-
+        youtubeId: "",
         featured: true
     },
 
@@ -107,12 +92,9 @@ const movies = [
         description:
             "A lighthearted comedy about friendship, embarrassing " +
             "situations, and hilarious misunderstandings.",
-
         poster:
             "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=600&h=900&fit=crop",
-
-        video: "",
-
+        youtubeId: "",
         featured: false
     },
 
@@ -124,12 +106,9 @@ const movies = [
         description:
             "A magical adventure through an extraordinary world " +
             "of ancient kingdoms and mythical creatures.",
-
         poster:
             "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&h=900&fit=crop",
-
-        video: "",
-
+        youtubeId: "",
         featured: false
     },
 
@@ -141,12 +120,9 @@ const movies = [
         description:
             "An unforgettable expedition into the wilderness " +
             "where survival depends on courage and determination.",
-
         poster:
             "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=600&h=900&fit=crop",
-
-        video: "",
-
+        youtubeId: "",
         featured: false
     },
 
@@ -158,12 +134,9 @@ const movies = [
         description:
             "A suspenseful tale in which a series of strange " +
             "events leads to a shocking discovery.",
-
         poster:
             "https://images.unsplash.com/photo-1509248961158-e54f6934749c?w=600&h=900&fit=crop",
-
-        video: "",
-
+        youtubeId: "",
         featured: false
     },
 
@@ -175,12 +148,9 @@ const movies = [
         description:
             "A science-fiction journey across distant galaxies " +
             "and unexplored worlds.",
-
         poster:
             "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=600&h=900&fit=crop",
-
-        video: "",
-
+        youtubeId: "",
         featured: false
     },
 
@@ -192,12 +162,9 @@ const movies = [
         description:
             "An old investigation is reopened, revealing " +
             "connections nobody expected.",
-
         poster:
             "https://images.unsplash.com/photo-1518709594023-6eab9bab7b23?w=600&h=900&fit=crop",
-
-        video: "",
-
+        youtubeId: "",
         featured: false
     },
 
@@ -209,15 +176,11 @@ const movies = [
         description:
             "Two people from different worlds discover that " +
             "love can change their lives.",
-
         poster:
             "https://images.unsplash.com/photo-1518621012118-6d6c9b8e6d9a?w=600&h=900&fit=crop",
-
-        video: "",
-
+        youtubeId: "",
         featured: false
     }
-
 ];
 
 
@@ -249,6 +212,7 @@ const modal = document.getElementById("movieModal");
 const modalClose = document.getElementById("modalClose");
 
 const moviePlayer = document.getElementById("moviePlayer");
+const noVideoMessage = document.getElementById("noVideoMessage");
 
 const movieTitle = document.getElementById("movieTitle");
 const movieYear = document.getElementById("movieYear");
@@ -275,33 +239,9 @@ let lastFocusedElement = null;
    4. HELPER FUNCTIONS
    --------------------------------------------------------- */
 
-// Find a movie by its unique ID.
-
 function getMovieById(id) {
     return movies.find(movie => movie.id === Number(id));
 }
-
-
-// Escape text for safe use in HTML strings.
-// Movie data is inserted through DOM text nodes below,
-// but this helper is also useful for future extensions.
-
-function escapeHTML(value) {
-    return String(value ?? "").replace(/[&<>"']/g, character => {
-        const entities = {
-            "&": "&amp;",
-            "<": "&lt;",
-            ">": "&gt;",
-            '"': "&quot;",
-            "'": "&#39;"
-        };
-
-        return entities[character];
-    });
-}
-
-
-// Create an image element with a fallback.
 
 function createPoster(movie, className = "movie-poster") {
     const image = document.createElement("img");
@@ -314,16 +254,12 @@ function createPoster(movie, className = "movie-poster") {
 
     image.onerror = function () {
         this.onerror = null;
-
         this.src =
             "https://placehold.co/600x900/0a0e27/ffffff?text=MovieClipsHQ";
     };
 
     return image;
 }
-
-
-// Create a button element.
 
 function createButton(text, className, callback) {
     const button = document.createElement("button");
@@ -344,55 +280,37 @@ function createButton(text, className, callback) {
 
 function getGenres() {
     return [...new Set(
-        movies
-            .map(movie => movie.genre)
-            .filter(Boolean)
+        movies.map(movie => movie.genre).filter(Boolean)
     )].sort((a, b) => a.localeCompare(b));
 }
-
 
 function renderGenreFilters() {
     const genres = getGenres();
 
     genreFilter.replaceChildren();
 
-    const allButton = createButton(
-        "All",
-        "genre-btn",
-        () => setGenre("all")
-    );
-
+    const allButton = createButton("All", "genre-btn", () => setGenre("all"));
     allButton.dataset.genre = "all";
-
     genreFilter.appendChild(allButton);
 
     genres.forEach(genre => {
-        const button = createButton(
-            genre,
-            "genre-btn",
-            () => setGenre(genre)
-        );
-
+        const button = createButton(genre, "genre-btn", () => setGenre(genre));
         button.dataset.genre = genre;
-
         genreFilter.appendChild(button);
     });
 
     updateGenreButtons();
 }
 
-
 function updateGenreButtons() {
     const buttons = genreFilter.querySelectorAll(".genre-btn");
 
     buttons.forEach(button => {
         const active = button.dataset.genre === currentGenre;
-
         button.classList.toggle("active", active);
         button.setAttribute("aria-pressed", String(active));
     });
 }
-
 
 function setGenre(genre) {
     currentGenre = genre;
@@ -400,7 +318,6 @@ function setGenre(genre) {
     updateGenreButtons();
     renderMovies();
 
-    // Keep the library visible after choosing a genre.
     document.getElementById("movies").scrollIntoView({
         behavior: "smooth",
         block: "start"
@@ -412,45 +329,36 @@ function setGenre(genre) {
    6. MOVIE CARD CREATION
    --------------------------------------------------------- */
 
-function createMovieCard(movie, featured = false) {
-
+function createMovieCard(movie, featured = false, index = 0) {
     const card = document.createElement("article");
 
     card.className = featured
         ? "movie-card recommended-card"
         : "movie-card";
 
+    card.style.setProperty("--stagger", index);
+
     card.tabIndex = 0;
     card.setAttribute("role", "button");
-    card.setAttribute(
-        "aria-label",
-        `View details for ${movie.title}`
-    );
-
+    card.setAttribute("aria-label", `View details for ${movie.title}`);
     card.dataset.movieId = movie.id;
-
-    // Poster wrapper
 
     const posterWrapper = document.createElement("div");
     posterWrapper.className = "movie-poster-wrapper";
-
     posterWrapper.appendChild(createPoster(movie));
-
-    // Overlay
 
     const overlay = document.createElement("div");
     overlay.className = "movie-overlay";
 
+    const playBtn = document.createElement("span");
+    playBtn.className = "movie-play-btn";
+
     const playText = document.createElement("span");
     playText.className = "movie-play";
-    playText.textContent = movie.video
-        ? "▶ Watch Clip"
-        : "View Details";
+    playText.textContent = movie.youtubeId ? "Watch Clip" : "View Details";
 
-    overlay.appendChild(playText);
+    overlay.append(playBtn, playText);
     posterWrapper.appendChild(overlay);
-
-    // Movie information
 
     const info = document.createElement("div");
     info.className = "movie-info";
@@ -477,22 +385,12 @@ function createMovieCard(movie, featured = false) {
     description.textContent = movie.description;
 
     info.append(title, metadata, description);
-
     card.append(posterWrapper, info);
 
-    // Open modal on click.
-
-    card.addEventListener("click", () => {
-        openMovieModal(movie.id);
-    });
-
-    // Support keyboard navigation.
+    card.addEventListener("click", () => openMovieModal(movie.id));
 
     card.addEventListener("keydown", event => {
-        if (
-            event.target === card &&
-            (event.key === "Enter" || event.key === " ")
-        ) {
+        if (event.target === card && (event.key === "Enter" || event.key === " ")) {
             event.preventDefault();
             openMovieModal(movie.id);
         }
@@ -507,25 +405,19 @@ function createMovieCard(movie, featured = false) {
    --------------------------------------------------------- */
 
 function renderRecommended() {
-
     recommendedGrid.replaceChildren();
 
     const featuredMovies = movies.filter(movie => movie.featured);
 
     if (featuredMovies.length === 0) {
         const message = document.createElement("p");
-
         message.textContent = "Featured movies will appear here.";
-
         recommendedGrid.appendChild(message);
-
         return;
     }
 
-    featuredMovies.forEach(movie => {
-        recommendedGrid.appendChild(
-            createMovieCard(movie, true)
-        );
+    featuredMovies.forEach((movie, index) => {
+        recommendedGrid.appendChild(createMovieCard(movie, true, index));
     });
 }
 
@@ -535,73 +427,45 @@ function renderRecommended() {
    --------------------------------------------------------- */
 
 function getFilteredMovies() {
-
     const query = currentSearch.trim().toLowerCase();
 
     return movies.filter(movie => {
-
         const matchesGenre =
             currentGenre === "all" ||
             movie.genre.toLowerCase() === currentGenre.toLowerCase();
 
         const searchableText = [
-            movie.title,
-            movie.genre,
-            movie.year,
-            movie.description
+            movie.title, movie.genre, movie.year, movie.description
         ].join(" ").toLowerCase();
 
-        const matchesSearch =
-            query === "" || searchableText.includes(query);
+        const matchesSearch = query === "" || searchableText.includes(query);
 
         return matchesGenre && matchesSearch;
     });
 }
 
-
 function renderMovies() {
-
     movieGrid.replaceChildren();
 
     const filteredMovies = getFilteredMovies();
 
-    filteredMovies.forEach(movie => {
-        movieGrid.appendChild(createMovieCard(movie));
+    filteredMovies.forEach((movie, index) => {
+        movieGrid.appendChild(createMovieCard(movie, false, index));
     });
 
-    // Show or hide the no-results section.
-
-    noResults.style.display =
-        filteredMovies.length === 0 ? "block" : "none";
-
-    // Display the search information.
+    noResults.style.display = filteredMovies.length === 0 ? "block" : "none";
 
     const hasSearch = currentSearch.trim().length > 0;
-
     searchInfo.style.display = hasSearch ? "flex" : "none";
-
     searchTerm.textContent = currentSearch;
-
-    // Keep search fields synchronized.
 
     headerSearch.value = currentSearch;
     heroSearch.value = currentSearch;
 }
 
-
 function handleSearch(value) {
-
     currentSearch = value;
-
     renderMovies();
-
-    // Reset genre if the search is active and the current
-    // genre filter is hiding all relevant search results.
-
-    if (currentSearch.trim() !== "") {
-        // Keep the selected genre so users can combine
-        // text search and genre filtering.
-    }
 }
 
 
@@ -609,160 +473,96 @@ function handleSearch(value) {
    9. SEARCH EVENT LISTENERS
    --------------------------------------------------------- */
 
-headerSearch.addEventListener("input", event => {
-    handleSearch(event.target.value);
-});
-
-
-heroSearch.addEventListener("input", event => {
-    handleSearch(event.target.value);
-});
-
+headerSearch.addEventListener("input", event => handleSearch(event.target.value));
+heroSearch.addEventListener("input", event => handleSearch(event.target.value));
 
 clearSearchBtn.addEventListener("click", () => {
-
     currentSearch = "";
-
     headerSearch.value = "";
     heroSearch.value = "";
-
     renderMovies();
-
     heroSearch.focus();
 });
 
-
 resetBtn.addEventListener("click", () => {
-
     currentSearch = "";
     currentGenre = "all";
-
     headerSearch.value = "";
     heroSearch.value = "";
-
     updateGenreButtons();
     renderMovies();
-
 });
 
-
 ctaButton.addEventListener("click", () => {
-
     document.getElementById("movies").scrollIntoView({
         behavior: "smooth",
         block: "start"
     });
-
 });
 
 
 /* ---------------------------------------------------------
-   10. MOVIE MODAL
+   10. MOVIE MODAL (YouTube iframe player)
    --------------------------------------------------------- */
 
 function openMovieModal(id) {
-
     const movie = getMovieById(id);
-
     if (!movie) return;
 
     currentMovieId = movie.id;
-
     lastFocusedElement = document.activeElement;
-
-    // Fill movie information.
 
     movieTitle.textContent = movie.title;
     movieYear.textContent = movie.year;
     movieGenre.textContent = movie.genre;
     movieDescription.textContent = movie.description;
 
-    // Reset the video player.
-
-    moviePlayer.pause();
-
-    moviePlayer.removeAttribute("src");
-    moviePlayer.load();
-
-    if (movie.video && movie.video.trim() !== "") {
-
-        moviePlayer.src = movie.video;
-
+    if (movie.youtubeId && movie.youtubeId.trim() !== "") {
+        moviePlayer.src =
+            `https://www.youtube.com/embed/${movie.youtubeId}?autoplay=1&rel=0`;
         moviePlayer.style.display = "block";
-
-        moviePlayer.load();
-
+        noVideoMessage.style.display = "none";
     } else {
-
-        // No video provided: hide the player.
+        moviePlayer.src = "";
         moviePlayer.style.display = "none";
+        noVideoMessage.style.display = "flex";
     }
-
-    // Load related movies.
 
     renderRelatedMovies(movie);
 
-    // Show modal.
-
     modal.classList.add("active");
     modal.setAttribute("aria-hidden", "false");
-
     document.body.classList.add("modal-open");
 
     modalClose.focus();
 }
 
-
 function closeMovieModal() {
-
     if (!modal.classList.contains("active")) return;
 
-    moviePlayer.pause();
-
-    moviePlayer.removeAttribute("src");
-    moviePlayer.load();
+    moviePlayer.src = "";
 
     modal.classList.remove("active");
     modal.setAttribute("aria-hidden", "true");
-
     document.body.classList.remove("modal-open");
 
     currentMovieId = null;
 
-    if (
-        lastFocusedElement &&
-        typeof lastFocusedElement.focus === "function"
-    ) {
+    if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
         lastFocusedElement.focus();
     }
 }
 
-
 modalClose.addEventListener("click", closeMovieModal);
 
-
-// Close when clicking outside the modal content.
-
 modal.addEventListener("click", event => {
-
-    if (event.target === modal) {
-        closeMovieModal();
-    }
-
+    if (event.target === modal) closeMovieModal();
 });
 
-
-// Close modal with Escape.
-
 document.addEventListener("keydown", event => {
-
-    if (
-        event.key === "Escape" &&
-        modal.classList.contains("active")
-    ) {
+    if (event.key === "Escape" && modal.classList.contains("active")) {
         closeMovieModal();
     }
-
 });
 
 
@@ -771,84 +571,52 @@ document.addEventListener("keydown", event => {
    --------------------------------------------------------- */
 
 function renderRelatedMovies(movie) {
-
     relatedMovies.replaceChildren();
 
     const related = movies
-        .filter(item =>
-            item.id !== movie.id &&
-            item.genre === movie.genre
-        )
+        .filter(item => item.id !== movie.id && item.genre === movie.genre)
         .slice(0, 4);
 
-    // If there are not enough movies in the same genre,
-    // fill the remaining spaces with other movies.
-
     if (related.length < 4) {
-
         const additionalMovies = movies.filter(item =>
             item.id !== movie.id &&
-            !related.some(relatedMovie =>
-                relatedMovie.id === item.id
-            )
+            !related.some(relatedMovie => relatedMovie.id === item.id)
         );
 
-        related.push(
-            ...additionalMovies.slice(0, 4 - related.length)
-        );
+        related.push(...additionalMovies.slice(0, 4 - related.length));
     }
 
     if (related.length === 0) {
-
         const message = document.createElement("p");
-
         message.textContent = "No related movies available.";
-
         relatedMovies.appendChild(message);
-
         return;
     }
 
-    related.forEach(relatedMovie => {
-
+    related.forEach((relatedMovie, index) => {
         const card = document.createElement("div");
 
         card.className = "related-card";
+        card.style.setProperty("--stagger", index);
         card.tabIndex = 0;
         card.setAttribute("role", "button");
+        card.setAttribute("aria-label", `View ${relatedMovie.title}`);
 
-        card.setAttribute(
-            "aria-label",
-            `View ${relatedMovie.title}`
-        );
-
-        const image = createPoster(
-            relatedMovie,
-            "related-poster"
-        );
+        const image = createPoster(relatedMovie, "related-poster");
 
         const title = document.createElement("p");
-
         title.className = "related-movie-title";
         title.textContent = relatedMovie.title;
 
         card.append(image, title);
 
-        card.addEventListener("click", () => {
-            openMovieModal(relatedMovie.id);
-        });
+        card.addEventListener("click", () => openMovieModal(relatedMovie.id));
 
         card.addEventListener("keydown", event => {
-
-            if (
-                event.key === "Enter" ||
-                event.key === " "
-            ) {
+            if (event.key === "Enter" || event.key === " ") {
                 event.preventDefault();
-
                 openMovieModal(relatedMovie.id);
             }
-
         });
 
         relatedMovies.appendChild(card);
@@ -861,35 +629,19 @@ function renderRelatedMovies(movie) {
    --------------------------------------------------------- */
 
 function closeMobileMenu() {
-
     mobileNav.classList.remove("active");
-
     mobileMenuBtn.classList.remove("active");
-
     mobileMenuBtn.setAttribute("aria-expanded", "false");
 }
 
-
 mobileMenuBtn.addEventListener("click", () => {
-
     const isOpen = mobileNav.classList.toggle("active");
-
     mobileMenuBtn.classList.toggle("active", isOpen);
-
-    mobileMenuBtn.setAttribute(
-        "aria-expanded",
-        String(isOpen)
-    );
-
+    mobileMenuBtn.setAttribute("aria-expanded", String(isOpen));
 });
 
-
-// Close the mobile menu after selecting a navigation link.
-
 mobileNav.querySelectorAll("a").forEach(link => {
-
     link.addEventListener("click", closeMobileMenu);
-
 });
 
 
@@ -898,78 +650,87 @@ mobileNav.querySelectorAll("a").forEach(link => {
    --------------------------------------------------------- */
 
 window.addEventListener("scroll", () => {
-
     const header = document.getElementById("header");
-
-    if (window.scrollY > 50) {
-
-        header.classList.add("scrolled");
-
-    } else {
-
-        header.classList.remove("scrolled");
-
-    }
-
+    header.classList.toggle("scrolled", window.scrollY > 50);
 }, { passive: true });
 
 
 /* ---------------------------------------------------------
-   14. ABOUT STATISTICS
+   14. SCROLL-REVEAL ANIMATIONS
    --------------------------------------------------------- */
 
-function updateStatistics() {
+const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.15 });
 
-    movieCount.textContent = movies.length;
-
-    genreCount.textContent = getGenres().length;
-
+function observeReveals() {
+    document
+        .querySelectorAll(".reveal, .movie-card")
+        .forEach(element => revealObserver.observe(element));
 }
 
 
 /* ---------------------------------------------------------
-   15. CURRENT YEAR
+   15. ABOUT STATISTICS
+   --------------------------------------------------------- */
+
+function animateCount(element, target) {
+    const duration = 1200;
+    const start = performance.now();
+
+    function tick(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        element.textContent = Math.round(eased * target);
+
+        if (progress < 1) requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+}
+
+function updateStatistics() {
+    animateCount(movieCount, movies.length);
+    animateCount(genreCount, getGenres().length);
+}
+
+
+/* ---------------------------------------------------------
+   16. CURRENT YEAR
    --------------------------------------------------------- */
 
 const currentYearElement = document.getElementById("currentYear");
-
 if (currentYearElement) {
     currentYearElement.textContent = new Date().getFullYear();
 }
 
 
 /* ---------------------------------------------------------
-   16. INITIALIZE WEBSITE
+   17. INITIALIZE WEBSITE
    --------------------------------------------------------- */
 
 function initializeWebsite() {
-
     renderGenreFilters();
-
     renderRecommended();
-
     renderMovies();
-
     updateStatistics();
-
-    // Make sure the modal starts closed.
 
     modal.classList.remove("active");
     modal.setAttribute("aria-hidden", "true");
-
     document.body.classList.remove("modal-open");
 
-    console.log("MovieClipsHQ initialized successfully.");
+    observeReveals();
 
+    console.log("MovieClipsHQ initialized successfully.");
 }
 
-
-// Run the application.
-
 initializeWebsite();
-
 
 /* =========================================================
    END OF MOVIECLIPSHQ SCRIPT
    ========================================================= */
-
