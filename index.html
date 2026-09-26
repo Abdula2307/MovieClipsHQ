@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +7,7 @@
     <meta name="description" content="MovieClipsHQ - Discover movie clips, trailers, and cinematic content. Search and explore curated film collections.">
     <meta name="keywords" content="movies, film, cinema, video clips, movie discovery, trailers">
     <meta name="author" content="MovieClipsHQ">
-    <meta name="theme-color" content="#0a0e27">
+    <meta name="theme-color" content="#050810">
 
     <meta property="og:title" content="MovieClipsHQ - Discover Something Worth Watching">
     <meta property="og:description" content="Explore curated movie clips and cinematic content.">
@@ -22,6 +21,10 @@
 
     <title>MovieClipsHQ - Movie Discovery & Cinema Blog</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -32,7 +35,7 @@
 
         <div class="logo">
             <a href="#home" aria-label="MovieClipsHQ Home">
-                <h1>MovieClipsHQ</h1>
+                <h1>MovieClips<span>HQ</span></h1>
             </a>
         </div>
 
@@ -85,12 +88,15 @@
 
     <!-- HERO -->
     <section class="hero" id="home">
+        <div class="hero-glow"></div>
+        <div class="hero-grid"></div>
+
         <div class="hero-content">
 
             <div class="hero-label">MOVIECLIPSHQ</div>
 
             <h2 class="hero-title">
-                Discover Something Worth Watching
+                Discover Something<br>Worth Watching
             </h2>
 
             <p class="hero-subtitle">
@@ -116,9 +122,13 @@
             </div>
 
             <button class="cta-button" id="ctaButton" type="button">
-                Browse All Movies
+                <span>Browse All Movies</span>
             </button>
 
+        </div>
+
+        <div class="scroll-cue" aria-hidden="true">
+            <span></span>
         </div>
     </section>
 
@@ -126,7 +136,7 @@
     <section class="recommended" id="recommended">
         <div class="container">
 
-            <div class="section-header">
+            <div class="section-header reveal">
                 <h2 class="section-title">Featured Selections</h2>
                 <p class="section-subtitle">
                     Hand-picked cinematic experiences
@@ -142,7 +152,7 @@
     <section class="movies" id="movies">
         <div class="container">
 
-            <div class="section-header">
+            <div class="section-header reveal">
                 <h2 class="section-title">Movie Library</h2>
                 <p class="section-subtitle">
                     Browse our complete collection
@@ -195,7 +205,7 @@
     <section class="about" id="about">
         <div class="container">
 
-            <div class="about-content">
+            <div class="about-content reveal">
                 <h2 class="section-title">About MovieClipsHQ</h2>
 
                 <p>
@@ -264,13 +274,18 @@
         <div class="modal-body">
 
             <div class="modal-video-container">
-                <video id="moviePlayer"
-                       controls
-                       playsinline
-                       preload="metadata"
-                       controlsList="nodownload">
-                    Your browser does not support the video tag.
-                </video>
+                <iframe id="moviePlayer"
+                        src=""
+                        title="Movie player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        style="display:none;">
+                </iframe>
+
+                <div class="no-video-message" id="noVideoMessage">
+                    <p>No clip available yet for this title.</p>
+                </div>
             </div>
 
             <div class="modal-info">
@@ -365,4 +380,3 @@
 
 </body>
 </html>
-
